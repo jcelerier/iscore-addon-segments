@@ -9,11 +9,17 @@
 #include <Scenario/Process/ScenarioModel.hpp>
 #include <Loop/LoopProcessModel.hpp>
 #include <ImageProcess/ImageModel.hpp>
-#include <Audio/SoundProcess/SoundProcessModel.hpp>
 
 #include <Scenario/Process/Algorithms/Accessors.hpp>
 #include <Scenario/Process/Algorithms/ContainersAccessors.hpp>
 #include <iscore/tools/SubtypeVariant.hpp>
+
+// Note : the audio plug-in is put in #ifdefs because
+// it requires Faust for now which can be a pain to compile.
+// Normal code shouldn't be that ugly :)
+#if defined(ISCORE_PLUGIN_AUDIO)
+#include <Audio/SoundProcess/SoundProcessModel.hpp>
+#endif
 namespace Segments
 {
 
@@ -30,8 +36,11 @@ using SegmentsProcess =
         const Process::ProcessModel,
         const Scenario::ProcessModel,
         const Loop::ProcessModel,
-        const Image::ProcessModel,
-        const Audio::Sound::ProcessModel>;
+        const Image::ProcessModel
+#if defined(ISCORE_PLUGIN_AUDIO)
+        , const Audio::Sound::ProcessModel
+#endif
+>;
 
 struct DepthVisitor
 {
@@ -267,11 +276,12 @@ struct DepthVisitor
             print() << "Image: " << image.imagePath() << "\n";
         }
 
+#if defined(ISCORE_PLUGIN_AUDIO)
         void operator()(const Audio::Sound::ProcessModel& sound)
         {
             print() << "Sound: " << sound.file().name() << "\n";
         }
-
+#endif
         void operator()()
         {
 
@@ -413,10 +423,12 @@ struct BreadthVisitor
             print() << "Image: " << image.imagePath() << "\n";
         }
 
+#if defined(ISCORE_PLUGIN_AUDIO)
         void operator()(const Audio::Sound::ProcessModel& sound)
         {
             print() << "Sound: " << sound.file().name() << "\n";
         }
+#endif
 
         void operator()()
         {

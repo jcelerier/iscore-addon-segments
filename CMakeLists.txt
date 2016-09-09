@@ -16,6 +16,10 @@ add_library(${PROJECT_NAME} ${SRCS} ${HDRS})
 target_link_libraries(${PROJECT_NAME} PUBLIC
     iscore_lib_base iscore_lib_process
     iscore_plugin_scenario iscore_plugin_automation
-    iscore_plugin_loop iscore_addon_image iscore_plugin_audio)
+    iscore_plugin_loop iscore_addon_image)
+
+if(TARGET iscore_plugin_audio)
+    target_link_libraries(${PROJECT_NAME} PUBLIC iscore_plugin_audio)
+endif()
 
 setup_iscore_plugin(${PROJECT_NAME})
