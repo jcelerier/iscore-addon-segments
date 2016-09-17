@@ -356,7 +356,7 @@ struct BreadthVisitor
             if(state.nextConstraint())
             {
                 auto& scenar = Scenario::parentScenario(state);
-                (*this)(scenar.constraint(state.nextConstraint()));
+                (*this)(scenar.constraint(*state.nextConstraint()));
             }
         }
 
