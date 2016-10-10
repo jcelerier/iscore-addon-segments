@@ -89,6 +89,7 @@ struct DepthVisitor
                     // Each slot has layers :
                     for(const Process::LayerModel& layer : slot.layers)
                     {
+                        (void) layer;
                         // This allows to have multiple "views"
                         // of the same process. For instance see
                         // the same scenario under two aspects (one for sound and one for video).
@@ -115,6 +116,7 @@ struct DepthVisitor
             // (they will be visited in operator()({Scenario,Loop}::ProcessModel))
             for(auto& state_id : event.states())
             {
+                (void) state_id;
                 // ...
             }
         }
@@ -150,6 +152,7 @@ struct DepthVisitor
             // And have ids of events
             for(auto& event_id : timenode.events())
             {
+                (void) event_id;
                 // ...
             }
         }
