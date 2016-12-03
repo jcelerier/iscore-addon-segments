@@ -3,6 +3,8 @@
 #include <QInputDialog>
 #include "iscore_addon_segments.hpp"
 
+#include <iscore/actions/ActionManager.hpp>
+
 namespace Segments
 {
 struct ApplicationPlugin :
