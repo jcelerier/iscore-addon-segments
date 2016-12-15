@@ -1,9 +1,10 @@
 #include <Segments/Visitor.hpp>
-#include <iscore/menu/MenuInterface.hpp>
+#include <iscore/actions/Menu.hpp>
 #include <QInputDialog>
 #include "iscore_addon_segments.hpp"
 
 #include <iscore/actions/ActionManager.hpp>
+#include <iscore/actions/MenuManager.hpp>
 
 namespace Segments
 {
