@@ -10,10 +10,10 @@ namespace Segments
 {
 struct ApplicationPlugin :
         public QObject,
-        public iscore::GUIApplicationContextPlugin
+        public iscore::GUIApplicationPlugin
 {
     public:
-        using iscore::GUIApplicationContextPlugin::GUIApplicationContextPlugin;
+        using iscore::GUIApplicationPlugin::GUIApplicationPlugin;
 
         GUIElements makeGUIElements() override
         {
@@ -41,7 +41,7 @@ struct ApplicationPlugin :
 
 iscore_addon_segments::iscore_addon_segments() = default;
 
-iscore::GUIApplicationContextPlugin* iscore_addon_segments::make_applicationPlugin(
+iscore::GUIApplicationPlugin* iscore_addon_segments::make_applicationPlugin(
         const iscore::GUIApplicationContext& app)
 {
     return new Segments::ApplicationPlugin{app};
