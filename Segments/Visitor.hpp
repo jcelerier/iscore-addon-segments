@@ -1,7 +1,6 @@
 #pragma once
 #include <core/document/DocumentModel.hpp>
-#include <Scenario/Document/Constraint/Rack/RackModel.hpp>
-#include <Scenario/Document/Constraint/Rack/Slot/SlotModel.hpp>
+#include <Scenario/Document/Constraint/Slot.hpp>
 #include <Scenario/Document/TimeNode/Trigger/TriggerModel.hpp>
 #include <Scenario/Document/ScenarioDocument/ScenarioDocumentModel.hpp>
 #include <Scenario/Document/State/ItemModel/MessageItemModel.hpp>
@@ -75,29 +74,6 @@ struct DepthVisitor
                 print() << "\n";
             }
             hierarchy_depth--;
-
-            // And racks : racks are the visual organization of the processes.
-            // Most of the time you only need to use the first one which is the
-            // one shown by default.
-            print() << "Racks: \n";
-            auto& racks = constraint.racks;
-            for(const Scenario::RackModel& rack : racks)
-            {
-                // Each rack has slots :
-                for(const Scenario::SlotModel& slot: rack.slotmodels)
-                {
-                    // Each slot has layers :
-                    for(const Process::LayerModel& layer : slot.layers)
-                    {
-                        (void) layer;
-                        // This allows to have multiple "views"
-                        // of the same process. For instance see
-                        // the same scenario under two aspects (one for sound and one for video).
-
-                        // But it is more for advanced i-score users :p
-                    }
-                }
-            }
 
             // Finally, a constraint is between two states :
             constraint.startState();

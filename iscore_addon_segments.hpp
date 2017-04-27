@@ -8,20 +8,20 @@
 class iscore_addon_segments final:
         public QObject,
         public iscore::Plugin_QtInterface,
-        public iscore::GUIApplicationPlugin_QtInterface
+        public iscore::ApplicationPlugin_QtInterface
 {
         Q_OBJECT
-        Q_PLUGIN_METADATA(IID GUIApplicationPlugin_QtInterface_iid)
+        Q_PLUGIN_METADATA(IID ApplicationPlugin_QtInterface_iid)
         Q_INTERFACES(
                 iscore::Plugin_QtInterface
-                iscore::GUIApplicationPlugin_QtInterface
+                iscore::ApplicationPlugin_QtInterface
                 )
 
     public:
         iscore_addon_segments();
         virtual ~iscore_addon_segments() = default;
 
-        iscore::GUIApplicationPlugin* make_applicationPlugin(
+        iscore::GUIApplicationPlugin* make_guiApplicationPlugin(
                 const iscore::GUIApplicationContext& app) override;
 
         iscore::Version version() const override;

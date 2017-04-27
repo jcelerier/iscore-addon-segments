@@ -41,7 +41,7 @@ struct ApplicationPlugin :
 
 iscore_addon_segments::iscore_addon_segments() = default;
 
-iscore::GUIApplicationPlugin* iscore_addon_segments::make_applicationPlugin(
+iscore::GUIApplicationPlugin* iscore_addon_segments::make_guiApplicationPlugin(
         const iscore::GUIApplicationContext& app)
 {
     return new Segments::ApplicationPlugin{app};
